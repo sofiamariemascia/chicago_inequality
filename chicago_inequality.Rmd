@@ -1,0 +1,33 @@
+---
+]title: "Chicago Equality"
+author: "Sofia Marie Mascia"
+date: "04/12/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+library(stringr)
+library(knitr)
+library(lubridate)
+library(haven)
+library(dplyr)
+library(kableExtra)
+library(fs)
+library(scales)
+library(janitor)
+
+```
+
+```{r}
+data <- read.csv("chicago-inequality.csv")
+```
+
+```{r}
+data %>% 
+mutate(county = str_split(geo_name, ", "))
+
+```
+
