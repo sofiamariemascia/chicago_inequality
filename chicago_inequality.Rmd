@@ -34,7 +34,8 @@ clean_data <- data %>%
   group_by(geo_name) %>% 
   mutate(state = str_sub(geo_name, -2, -1)) %>% 
   filter(state == "IL") %>% 
-  mutate_all(funs(replace(., is.na(.), 0)))
+  mutate_all(funs(replace(., is.na(.), 0))) %>% 
+  filter(homicide_rate_2015 >= 3, homicide_rate_2016 >= 3)
 
 
  ## Later - find a way to clean county column: str_split(geo_name, "County, ", n=2)
