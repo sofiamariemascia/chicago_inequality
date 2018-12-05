@@ -36,6 +36,7 @@ clean_data <- data %>%
   filter(state == "IL") %>% 
   mutate_all(funs(replace(., is.na(.), 0)))
 
+
  ## Later - find a way to clean county column: str_split(geo_name, "County, ", n=2)
   
  clean_data %>% write_rds("chicago_inequality/chicago_inequality.rds")
