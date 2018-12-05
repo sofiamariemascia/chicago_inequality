@@ -27,7 +27,10 @@ ui <- fluidPage(
       selectInput("x", "X-axis:",
                   choices = c("geo_name", "adult_smoking_2015", "adult_smoking2016", "homicide_rate_2015", "homicide_rate_2016"),
                   selected = "homicide_rate_2016"),
-      selectInput("y", "Color By:",
+      selectInput("y", "Y-axis:",
+                  c("income_2015", "income_2016"),
+                  selected = "income_2016"),
+      selectInput("z", "Color By:",
                   c("income_2015", "income_2016", "geo_name"),
                   selected = "geo_name"),
       hr(),
@@ -51,9 +54,9 @@ server <- function(input, output) {
     
     ##Read in the results data from UPSHOT
     clean_data %>% 
-      ggplot(aes_string(x = input$x, y = input$y, fill = input$y)) +
+      ggplot(aes_string(x = input$x, y = input$y, fill = input$z)) +
       geom_bar(stat="identity", color = "white", width=0.5, position = position_dodge(width=0.9))+
-      labs(y="Frequency",title="The Effect of Income on Homicide and Smoking rates in Chicago Counties")+
+      labs(title="The Effect of Income on Homicide and Smoking rates in Chicago Counties")+
       theme_minimal()+
       theme(legend.position="bottom")
     
