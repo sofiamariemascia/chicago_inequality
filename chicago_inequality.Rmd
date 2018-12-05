@@ -1,5 +1,5 @@
 ---
-]title: "Chicago Equality"
+title: "Chicago Equality"
 author: "Sofia Marie Mascia"
 date: "04/12/2018"
 output: html_document
@@ -18,16 +18,26 @@ library(kableExtra)
 library(fs)
 library(scales)
 library(janitor)
+library(tidyr)
 
 ```
 
 ```{r}
-data <- read.csv("chicago-inequality.csv")
+data <- read.csv("chicago-inequality.csv", na.strings=c(""," ","NA"))
 ```
 
 ```{r}
-data %>% 
-mutate(county = str_split(geo_name, ", "))
+clean_data <- data %>% 
+  drop_na(geo_name) %>% 
+  select(geo_name, adult_smoking_2015, adult_smoking_2016, homicide_rate_2015, 
+         homicide_rate_2016, income_2015, income_2016) %>% 
+  group_by(geo_name) %>% 
+  mutate(state = str_sub(geo_name, -2, -1)) %>% 
+  filter(state == "IL") %>% 
+  mutate_all(funs(replace(., is.na(.), 0)))
 
+ ## Later - find a way to clean county column: str_split(geo_name, "County, ", n=2)
+  
+ clean_data %>% write_rds("chicago_inequality/chicago_inequality.rds")
 ```
 
