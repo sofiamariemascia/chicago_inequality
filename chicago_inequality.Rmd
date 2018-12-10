@@ -19,7 +19,7 @@ library(fs)
 library(scales)
 library(janitor)
 library(tidyr)
-
+library(ggmap)
 ```
 
 ```{r}
@@ -40,6 +40,12 @@ clean_data <- data %>%
 
  ## Later - find a way to clean county column: str_split(geo_name, "County, ", n=2)
   
- clean_data %>% write_rds("chicago_inequality/chicago_inequality.rds")
+ clean_data %>% write_rds("demo_app/chicago_inequality.rds")
+```
+
+
+```{r}
+geocode("60 East Van Buren St, Chicago IL, 606065", 
+        source = "dsk")
 ```
 

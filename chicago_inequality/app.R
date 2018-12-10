@@ -55,7 +55,7 @@ server <- function(input, output) {
     ##Read in the results data from UPSHOT
     clean_data %>% 
       ggplot(aes_string(x = input$x, y = input$y, fill = input$z)) +
-      geom_bar(stat="identity", color = "white", width=0.5, position = position_dodge(width=0.9))+
+      geom_bar(stat="identity", color = "white", width=0.2, position = position_dodge(width=0.9))+
       labs(title="The Effect of Income on Homicide and Smoking rates in Chicago Counties")+
       theme_minimal()+
       theme(legend.position="bottom")
