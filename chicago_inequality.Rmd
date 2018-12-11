@@ -8,18 +8,16 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 
+library(shiny)
+library(shinydashboard)
 library(tidyverse)
 library(stringr)
-library(knitr)
-library(lubridate)
-library(haven)
+library(ggplot2)
 library(dplyr)
-library(kableExtra)
-library(fs)
-library(scales)
-library(janitor)
-library(tidyr)
-library(ggmap)
+library(base)
+library(devtools)
+library(urbnmapr)
+
 ```
 
 ```{r}
@@ -45,7 +43,19 @@ clean_data <- data %>%
 
 
 ```{r}
-geocode("60 East Van Buren St, Chicago IL, 606065", 
-        source = "dsk")
+
+#Cleaning data for income map
+#INCOME WHITE
+income_white <- read.csv("income_white.csv", na.strings=c(""," ","NA"))
+
+income_white <- income_white %>% 
+  filter(year == 2016)
+ 
+income_white %>% write_rds("demo_app/income_white.rds")
+
+## Loading County Data
+household_data <- left_join(countydata, counties, by = "county_fips") 
+
 ```
+
 
