@@ -1,0 +1,409 @@
+year,geo_name,geo,income_black
+2014,"Adams County","05000US17001",21917.0
+2014,"Alexander County","05000US17003",17083.0
+2014,"Bond County","05000US17005",40556.0
+2014,"Boone County","05000US17007",54543.0
+2014,"Brown County","05000US17009",None
+2014,"Bureau County","05000US17011",51339.0
+2014,"Calhoun County","05000US17013",None
+2014,"Carroll County","05000US17015",None
+2014,"Cass County","05000US17017",34141.0
+2014,"Champaign County, IL","05000US17019",25139.0
+2014,"Christian County","05000US17021",15250.0
+2014,"Clark County","05000US17023",None
+2014,"Clay County","05000US17025",None
+2014,"Clinton County","05000US17027",27534.0
+2014,"Coles County","05000US17029",14706.0
+2014,"Cook County, IL","05000US17031",34935.0
+2014,"Crawford County","05000US17033",101250.0
+2014,"Cumberland County","05000US17035",None
+2014,"DeKalb County, IL","05000US17037",22530.0
+2014,"De Witt County","05000US17039",None
+2014,"Douglas County","05000US17041",None
+2014,"DuPage County, IL","05000US17043",51396.0
+2014,"Edgar County","05000US17045",None
+2014,"Edwards County","05000US17047",None
+2014,"Effingham County","05000US17049",None
+2014,"Fayette County","05000US17051",None
+2014,"Ford County","05000US17053",88077.0
+2014,"Franklin County","05000US17055",2499.0
+2014,"Fulton County","05000US17057",None
+2014,"Gallatin County","05000US17059",None
+2014,"Greene County","05000US17061",None
+2014,"Grundy County","05000US17063",30309.0
+2014,"Hamilton County","05000US17065",None
+2014,"Hancock County","05000US17067",None
+2014,"Hardin County","05000US17069",None
+2014,"Henderson County","05000US17071",None
+2014,"Henry County","05000US17073",16500.0
+2014,"Iroquois County","05000US17075",21296.0
+2014,"Jackson County","05000US17077",13529.0
+2014,"Jasper County","05000US17079",None
+2014,"Jefferson County","05000US17081",30081.0
+2014,"Jersey County","05000US17083",90435.0
+2014,"Jo Daviess County","05000US17085",68056.0
+2014,"Johnson County","05000US17087",62639.0
+2014,"Kane County, IL","05000US17089",39254.0
+2014,"Kankakee County, IL","05000US17091",28082.0
+2014,"Kendall County, IL","05000US17093",96146.0
+2014,"Knox County","05000US17095",21635.0
+2014,"Lake County, IL","05000US17097",40369.0
+2014,"LaSalle County, IL","05000US17099",18802.0
+2014,"Lawrence County","05000US17101",18587.0
+2014,"Lee County","05000US17103",22083.0
+2014,"Livingston County","05000US17105",57917.0
+2014,"Logan County","05000US17107",16016.0
+2014,"McDonough County","05000US17109",25100.0
+2014,"McHenry County, IL","05000US17111",68049.0
+2014,"McLean County, IL","05000US17113",26700.0
+2014,"Macon County, IL","05000US17115",22683.0
+2014,"Macoupin County","05000US17117",45625.0
+2014,"Madison County, IL","05000US17119",30966.0
+2014,"Marion County","05000US17121",27011.0
+2014,"Marshall County","05000US17123",None
+2014,"Mason County","05000US17125",None
+2014,"Massac County","05000US17127",24145.0
+2014,"Menard County","05000US17129",None
+2014,"Mercer County","05000US17131",None
+2014,"Monroe County","05000US17133",None
+2014,"Montgomery County","05000US17135",49760.0
+2014,"Morgan County","05000US17137",26343.0
+2014,"Moultrie County","05000US17139",None
+2014,"Ogle County","05000US17141",41827.0
+2014,"Peoria County, IL","05000US17143",25976.0
+2014,"Perry County","05000US17145",25156.0
+2014,"Piatt County","05000US17147",None
+2014,"Pike County","05000US17149",None
+2014,"Pope County","05000US17151",None
+2014,"Pulaski County","05000US17153",29038.0
+2014,"Putnam County","05000US17155",None
+2014,"Randolph County","05000US17157",33750.0
+2014,"Richland County","05000US17159",None
+2014,"Rock Island County, IL","05000US17161",30976.0
+2014,"St. Clair County, IL","05000US17163",28233.0
+2014,"Saline County","05000US17165",20529.0
+2014,"Sangamon County, IL","05000US17167",26192.0
+2014,"Schuyler County","05000US17169",None
+2014,"Scott County","05000US17171",None
+2014,"Shelby County","05000US17173",None
+2014,"Stark County","05000US17175",None
+2014,"Stephenson County","05000US17177",24861.0
+2014,"Tazewell County, IL","05000US17179",35890.0
+2014,"Union County","05000US17181",31000.0
+2014,"Vermilion County","05000US17183",21813.0
+2014,"Wabash County","05000US17185",None
+2014,"Warren County","05000US17187",34412.0
+2014,"Washington County","05000US17189",18462.0
+2014,"Wayne County","05000US17191",2499.0
+2014,"White County","05000US17193",None
+2014,"Whiteside County","05000US17195",43654.0
+2014,"Will County, IL","05000US17197",57176.0
+2014,"Williamson County","05000US17199",26761.0
+2014,"Winnebago County, IL","05000US17201",23706.0
+2014,"Woodford County","05000US17203",None
+2015,"Adams County","05000US17001",23646.0
+2015,"Alexander County","05000US17003",17166.0
+2015,"Bond County","05000US17005",45000.0
+2015,"Boone County","05000US17007",56845.0
+2015,"Brown County","05000US17009",None
+2015,"Bureau County","05000US17011",50709.0
+2015,"Calhoun County","05000US17013",None
+2015,"Carroll County","05000US17015",None
+2015,"Cass County","05000US17017",35515.0
+2015,"Champaign County, IL","05000US17019",25921.0
+2015,"Christian County","05000US17021",15536.0
+2015,"Clark County","05000US17023",None
+2015,"Clay County","05000US17025",None
+2015,"Clinton County","05000US17027",None
+2015,"Coles County","05000US17029",15673.0
+2015,"Cook County, IL","05000US17031",34289.0
+2015,"Crawford County","05000US17033",101346.0
+2015,"Cumberland County","05000US17035",None
+2015,"DeKalb County, IL","05000US17037",21072.0
+2015,"De Witt County","05000US17039",None
+2015,"Douglas County","05000US17041",None
+2015,"DuPage County, IL","05000US17043",51329.0
+2015,"Edgar County","05000US17045",None
+2015,"Edwards County","05000US17047",None
+2015,"Effingham County","05000US17049",None
+2015,"Fayette County","05000US17051",None
+2015,"Ford County","05000US17053",88077.0
+2015,"Franklin County","05000US17055",41042.0
+2015,"Fulton County","05000US17057",None
+2015,"Gallatin County","05000US17059",None
+2015,"Greene County","05000US17061",None
+2015,"Grundy County","05000US17063",30743.0
+2015,"Hamilton County","05000US17065",None
+2015,"Hancock County","05000US17067",None
+2015,"Hardin County","05000US17069",None
+2015,"Henderson County","05000US17071",None
+2015,"Henry County","05000US17073",17679.0
+2015,"Iroquois County","05000US17075",21378.0
+2015,"Jackson County","05000US17077",15280.0
+2015,"Jasper County","05000US17079",None
+2015,"Jefferson County","05000US17081",31696.0
+2015,"Jersey County","05000US17083",None
+2015,"Jo Daviess County","05000US17085",None
+2015,"Johnson County","05000US17087",None
+2015,"Kane County, IL","05000US17089",39620.0
+2015,"Kankakee County, IL","05000US17091",28198.0
+2015,"Kendall County, IL","05000US17093",83685.0
+2015,"Knox County","05000US17095",18852.0
+2015,"Lake County, IL","05000US17097",39812.0
+2015,"LaSalle County, IL","05000US17099",31082.0
+2015,"Lawrence County","05000US17101",60500.0
+2015,"Lee County","05000US17103",61250.0
+2015,"Livingston County","05000US17105",None
+2015,"Logan County","05000US17107",16318.0
+2015,"McDonough County","05000US17109",None
+2015,"McHenry County, IL","05000US17111",68333.0
+2015,"McLean County, IL","05000US17113",27227.0
+2015,"Macon County, IL","05000US17115",21997.0
+2015,"Macoupin County","05000US17117",105039.0
+2015,"Madison County, IL","05000US17119",30120.0
+2015,"Marion County","05000US17121",30912.0
+2015,"Marshall County","05000US17123",None
+2015,"Mason County","05000US17125",None
+2015,"Massac County","05000US17127",23194.0
+2015,"Menard County","05000US17129",None
+2015,"Mercer County","05000US17131",None
+2015,"Monroe County","05000US17133",None
+2015,"Montgomery County","05000US17135",None
+2015,"Morgan County","05000US17137",30265.0
+2015,"Moultrie County","05000US17139",None
+2015,"Ogle County","05000US17141",42070.0
+2015,"Peoria County, IL","05000US17143",25998.0
+2015,"Perry County","05000US17145",19917.0
+2015,"Piatt County","05000US17147",None
+2015,"Pike County","05000US17149",None
+2015,"Pope County","05000US17151",None
+2015,"Pulaski County","05000US17153",25106.0
+2015,"Putnam County","05000US17155",None
+2015,"Randolph County","05000US17157",26875.0
+2015,"Richland County","05000US17159",None
+2015,"Rock Island County, IL","05000US17161",31869.0
+2015,"St. Clair County, IL","05000US17163",27289.0
+2015,"Saline County","05000US17165",None
+2015,"Sangamon County, IL","05000US17167",26468.0
+2015,"Schuyler County","05000US17169",None
+2015,"Scott County","05000US17171",None
+2015,"Shelby County","05000US17173",None
+2015,"Stark County","05000US17175",None
+2015,"Stephenson County","05000US17177",24795.0
+2015,"Tazewell County, IL","05000US17179",None
+2015,"Union County","05000US17181",None
+2015,"Vermilion County","05000US17183",23053.0
+2015,"Wabash County","05000US17185",None
+2015,"Warren County","05000US17187",39821.0
+2015,"Washington County","05000US17189",2499.0
+2015,"Wayne County","05000US17191",2499.0
+2015,"White County","05000US17193",None
+2015,"Whiteside County","05000US17195",34554.0
+2015,"Will County, IL","05000US17197",55017.0
+2015,"Williamson County","05000US17199",31181.0
+2015,"Winnebago County, IL","05000US17201",25371.0
+2015,"Woodford County","05000US17203",None
+2013,"Adams County","05000US17001",21750.0
+2013,"Alexander County","05000US17003",16875.0
+2013,"Bond County","05000US17005",24158.0
+2013,"Boone County","05000US17007",43587.0
+2013,"Brown County","05000US17009",None
+2013,"Bureau County","05000US17011",51071.0
+2013,"Calhoun County","05000US17013",None
+2013,"Carroll County","05000US17015",None
+2013,"Cass County","05000US17017",32500.0
+2013,"Champaign County, IL","05000US17019",26018.0
+2013,"Christian County","05000US17021",14107.0
+2013,"Clark County","05000US17023",None
+2013,"Clay County","05000US17025",None
+2013,"Clinton County","05000US17027",21010.0
+2013,"Coles County","05000US17029",19368.0
+2013,"Cook County, IL","05000US17031",34961.0
+2013,"Crawford County","05000US17033",None
+2013,"Cumberland County","05000US17035",None
+2013,"DeKalb County, IL","05000US17037",20977.0
+2013,"De Witt County","05000US17039",None
+2013,"Douglas County","05000US17041",None
+2013,"DuPage County, IL","05000US17043",52090.0
+2013,"Edgar County","05000US17045",None
+2013,"Edwards County","05000US17047",None
+2013,"Effingham County","05000US17049",None
+2013,"Fayette County","05000US17051",None
+2013,"Ford County","05000US17053",85694.0
+2013,"Franklin County","05000US17055",None
+2013,"Fulton County","05000US17057",9135.0
+2013,"Gallatin County","05000US17059",None
+2013,"Greene County","05000US17061",None
+2013,"Grundy County","05000US17063",29237.0
+2013,"Hamilton County","05000US17065",None
+2013,"Hancock County","05000US17067",None
+2013,"Hardin County","05000US17069",None
+2013,"Henderson County","05000US17071",None
+2013,"Henry County","05000US17073",20769.0
+2013,"Iroquois County","05000US17075",21304.0
+2013,"Jackson County","05000US17077",13247.0
+2013,"Jasper County","05000US17079",None
+2013,"Jefferson County","05000US17081",26161.0
+2013,"Jersey County","05000US17083",None
+2013,"Jo Daviess County","05000US17085",67813.0
+2013,"Johnson County","05000US17087",18750.0
+2013,"Kane County, IL","05000US17089",36330.0
+2013,"Kankakee County, IL","05000US17091",26254.0
+2013,"Kendall County, IL","05000US17093",94286.0
+2013,"Knox County","05000US17095",26910.0
+2013,"Lake County, IL","05000US17097",42633.0
+2013,"LaSalle County, IL","05000US17099",12394.0
+2013,"Lawrence County","05000US17101",18375.0
+2013,"Lee County","05000US17103",31953.0
+2013,"Livingston County","05000US17105",57969.0
+2013,"Logan County","05000US17107",15286.0
+2013,"McDonough County","05000US17109",25313.0
+2013,"McHenry County, IL","05000US17111",84779.0
+2013,"McLean County, IL","05000US17113",31269.0
+2013,"Macon County, IL","05000US17115",25561.0
+2013,"Macoupin County","05000US17117",44792.0
+2013,"Madison County, IL","05000US17119",30040.0
+2013,"Marion County","05000US17121",33922.0
+2013,"Marshall County","05000US17123",None
+2013,"Mason County","05000US17125",None
+2013,"Massac County","05000US17127",25930.0
+2013,"Menard County","05000US17129",None
+2013,"Mercer County","05000US17131",None
+2013,"Monroe County","05000US17133",None
+2013,"Montgomery County","05000US17135",None
+2013,"Morgan County","05000US17137",26038.0
+2013,"Moultrie County","05000US17139",None
+2013,"Ogle County","05000US17141",40125.0
+2013,"Peoria County, IL","05000US17143",25241.0
+2013,"Perry County","05000US17145",45103.0
+2013,"Piatt County","05000US17147",None
+2013,"Pike County","05000US17149",None
+2013,"Pope County","05000US17151",None
+2013,"Pulaski County","05000US17153",29375.0
+2013,"Putnam County","05000US17155",None
+2013,"Randolph County","05000US17157",30129.0
+2013,"Richland County","05000US17159",None
+2013,"Rock Island County, IL","05000US17161",29756.0
+2013,"St. Clair County, IL","05000US17163",28022.0
+2013,"Saline County","05000US17165",18583.0
+2013,"Sangamon County, IL","05000US17167",26799.0
+2013,"Schuyler County","05000US17169",None
+2013,"Scott County","05000US17171",None
+2013,"Shelby County","05000US17173",None
+2013,"Stark County","05000US17175",None
+2013,"Stephenson County","05000US17177",26836.0
+2013,"Tazewell County, IL","05000US17179",34054.0
+2013,"Union County","05000US17181",30938.0
+2013,"Vermilion County","05000US17183",19388.0
+2013,"Wabash County","05000US17185",None
+2013,"Warren County","05000US17187",32917.0
+2013,"Washington County","05000US17189",19091.0
+2013,"Wayne County","05000US17191",2499.0
+2013,"White County","05000US17193",None
+2013,"Whiteside County","05000US17195",25357.0
+2013,"Will County, IL","05000US17197",58502.0
+2013,"Williamson County","05000US17199",24750.0
+2013,"Winnebago County, IL","05000US17201",24041.0
+2013,"Woodford County","05000US17203",None
+2016,"Edgar County","05000US17045",None
+2016,"Adams County","05000US17001",27734.0
+2016,"Alexander County","05000US17003",17976.0
+2016,"Bond County","05000US17005",56372.0
+2016,"Boone County","05000US17007",69750.0
+2016,"Brown County","05000US17009",None
+2016,"Bureau County","05000US17011",53237.0
+2016,"Calhoun County","05000US17013",None
+2016,"Carroll County","05000US17015",9663.0
+2016,"Cass County","05000US17017",33977.0
+2016,"Champaign County, IL","05000US17019",29875.0
+2016,"Christian County","05000US17021",14844.0
+2016,"Clark County","05000US17023",None
+2016,"Clay County","05000US17025",None
+2016,"Clinton County","05000US17027",61995.0
+2016,"Coles County","05000US17029",14583.0
+2016,"Cook County, IL","05000US17031",34893.0
+2016,"Crawford County","05000US17033",112000.0
+2016,"Cumberland County","05000US17035",None
+2016,"DeKalb County, IL","05000US17037",19736.0
+2016,"De Witt County","05000US17039",None
+2016,"Douglas County","05000US17041",None
+2016,"DuPage County, IL","05000US17043",49666.0
+2016,"Edwards County","05000US17047",None
+2016,"Effingham County","05000US17049",47560.0
+2016,"Fayette County","05000US17051",None
+2016,"Ford County","05000US17053",None
+2016,"Franklin County","05000US17055",35000.0
+2016,"Fulton County","05000US17057",None
+2016,"Gallatin County","05000US17059",None
+2016,"Greene County","05000US17061",None
+2016,"Grundy County","05000US17063",None
+2016,"Hamilton County","05000US17065",None
+2016,"Hancock County","05000US17067",None
+2016,"Hardin County","05000US17069",None
+2016,"Henderson County","05000US17071",None
+2016,"Henry County","05000US17073",18846.0
+2016,"Iroquois County","05000US17075",None
+2016,"Jackson County","05000US17077",14103.0
+2016,"Jasper County","05000US17079",None
+2016,"Jefferson County","05000US17081",26713.0
+2016,"Jersey County","05000US17083",None
+2016,"Jo Daviess County","05000US17085",18333.0
+2016,"Johnson County","05000US17087",None
+2016,"Kane County, IL","05000US17089",38886.0
+2016,"Kankakee County, IL","05000US17091",28816.0
+2016,"Kendall County, IL","05000US17093",84953.0
+2016,"Knox County","05000US17095",17542.0
+2016,"Lake County, IL","05000US17097",42806.0
+2016,"LaSalle County, IL","05000US17099",None
+2016,"Lawrence County","05000US17101",None
+2016,"Lee County","05000US17103",None
+2016,"Livingston County","05000US17105",None
+2016,"Logan County","05000US17107",16720.0
+2016,"McDonough County","05000US17109",None
+2016,"McHenry County, IL","05000US17111",70208.0
+2016,"McLean County, IL","05000US17113",32680.0
+2016,"Macon County, IL","05000US17115",21871.0
+2016,"Macoupin County","05000US17117",51618.0
+2016,"Madison County, IL","05000US17119",30595.0
+2016,"Marion County","05000US17121",22130.0
+2016,"Marshall County","05000US17123",None
+2016,"Mason County","05000US17125",None
+2016,"Massac County","05000US17127",22000.0
+2016,"Menard County","05000US17129",26417.0
+2016,"Mercer County","05000US17131",None
+2016,"Monroe County","05000US17133",None
+2016,"Montgomery County","05000US17135",None
+2016,"Morgan County","05000US17137",31034.0
+2016,"Moultrie County","05000US17139",None
+2016,"Ogle County","05000US17141",None
+2016,"Peoria County, IL","05000US17143",27094.0
+2016,"Perry County","05000US17145",None
+2016,"Piatt County","05000US17147",None
+2016,"Pike County","05000US17149",None
+2016,"Pope County","05000US17151",None
+2016,"Pulaski County","05000US17153",24250.0
+2016,"Putnam County","05000US17155",None
+2016,"Randolph County","05000US17157",23750.0
+2016,"Richland County","05000US17159",2499.0
+2016,"Rock Island County, IL","05000US17161",33234.0
+2016,"St. Clair County, IL","05000US17163",27563.0
+2016,"Saline County","05000US17165",None
+2016,"Sangamon County, IL","05000US17167",27227.0
+2016,"Schuyler County","05000US17169",32206.0
+2016,"Scott County","05000US17171",None
+2016,"Shelby County","05000US17173",None
+2016,"Stark County","05000US17175",None
+2016,"Stephenson County","05000US17177",25798.0
+2016,"Tazewell County, IL","05000US17179",None
+2016,"Union County","05000US17181",None
+2016,"Vermilion County","05000US17183",24504.0
+2016,"Wabash County","05000US17185",None
+2016,"Warren County","05000US17187",46397.0
+2016,"Washington County","05000US17189",None
+2016,"Wayne County","05000US17191",2499.0
+2016,"White County","05000US17193",None
+2016,"Whiteside County","05000US17195",34360.0
+2016,"Will County, IL","05000US17197",56419.0
+2016,"Williamson County","05000US17199",31164.0
+2016,"Winnebago County, IL","05000US17201",27715.0
+2016,"Woodford County","05000US17203",None

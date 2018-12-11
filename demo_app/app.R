@@ -12,24 +12,21 @@ library(shinydashboard)
 library(tidyverse)
 library(stringr)
 library(ggplot2)
-library(kableExtra)
-library(lubridate)
-library(knitr)
-library(readr)
 library(dplyr)
-library(haven)
 library(base)
-library(leaflet)
-library(ggmap)
+library(devtools)
+library(urbnmapr)
+
 
 
 clean_data <- read_rds("chicago_inequality.rds")
+income_white <- read_rds("income_white.rds")
 
 # Define UI for application that draws a histogram
 ui <- dashboardPage(
   
     #HEADER
-   dashboardHeader(title = "Illinois: A SocioEconomic Diaspra"),
+   dashboardHeader(title = "Illinois"),
    
    #SIDEBAR
    dashboardSidebar(
@@ -62,8 +59,8 @@ ui <- dashboardPage(
               ),
       
       tabItem(tabName = "maps",
-              h2("Widgets tab content"),
-              leafletOutput("mymap",height = 1000)
+              h2("Median Household Income of Illinois by County"),
+              plotOutput("mymap",height = 500)
               
               )
              )
@@ -90,16 +87,20 @@ server <- function(input, output) {
   })
   
   
-  output$mymap <- renderLeaflet({
-    leaflet(options = 
-              leafletOptions(dragging = FALSE,
-                             minZoom = 14, 
-                             maxZoom = 18)) %>%
-      addProviderTiles("OpenStreetMap.BlackAndWhite") %>% 
-      setView(lng = 36.7, 
-            lat = 40.3333, 
-            zoom = 18) 
+  output$mymap <- renderPlot({
     
+    countydata %>% 
+      left_join(counties, by = "county_fips") %>% 
+      filter(state_name =="Illinois") %>% 
+      ggplot(mapping = aes(long, lat, group = group, fill = medhhincome)) +
+      geom_polygon(color = "#ffffff", size = .25) +
+      scale_fill_gradient(labels = scales::number_format(),
+                           guide = guide_colorbar(title.position = "top"),
+                          low = "white", high = "darkblue") +
+      coord_map(projection = "albers", lat0 = 39, lat1 = 45) +
+      theme(legend.title = element_text(),
+            legend.key.width = unit(.5, "in")) +
+      labs(fill = "Median Household Income")
   })
   
 }

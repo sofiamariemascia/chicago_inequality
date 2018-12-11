@@ -1,0 +1,42 @@
+---
+title: "map test"
+author: "Sofia Marie Mascia"
+date: "10/12/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(shiny)
+library(shinydashboard)
+library(tidyverse)
+library(stringr)
+library(ggplot2)
+library(dplyr)
+library(base)
+library(devtools)
+library(urbnmapr)
+
+```
+
+```{r}
+## Loading County Data
+household_data <- left_join(countydata, counties, by = "county_fips") 
+
+household_data %>%
+  ggplot(aes(long, lat, group = group, fill = horate)) +
+  geom_polygon(color = NA) +
+  scale_fill_gradient(labels = scales::percent,
+                       guide = guide_colorbar(title.position = "top")) +
+  geom_polygon(data = states, mapping = aes(long, lat, group = group),
+               fill = NA, color = "#ffffff") +
+  coord_map(projection = "albers", lat0 = 39, lat1 = 45) +
+  theme(legend.title = element_text(),
+        legend.key.width = unit(.5, "in")) +
+  labs(fill = "Homeownership rate")
+
+```
+
+
+
