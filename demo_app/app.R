@@ -16,11 +16,13 @@ library(base)
 library(devtools)
 library(urbnmapr)
 library(plotly)
+library(RColorBrewer)
 
 
 clean_data <- read_rds("chicago_inequality.rds")
 income_white <- read_rds("income_white.rds")
 race_mapping_data <- read_rds("race_mapping_data.rds")
+poverty_race <- read_rds("poverty_race.rds")
 
 
 # Define UI for application that draws a histogram
@@ -45,24 +47,50 @@ ui <- dashboardPage( skin = "purple",
     tabItems(
       tabItem(tabName = "about",
               box(
-                h3("Please Mind the Gap! By Sofia Marie Mascia"),
+                h3("Please Mind the Gap! Illinois, a Racial and Socioeconomic Diaspra"),
+                h4("By Sofia Marie Mascia"),
                 div(),
-                h5("This app aims to prove how socioeconomic gaps in Illinois 
-                   indicate negative effects of inequality elsewhere.")),
+                p("This app aims to prove how socioeconomic gaps in Illinois 
+                   indicate negative effects of inequality elsewhere."),
+                br(),
                 
-                fluidRow(
+                p("Chicago has been dubed America's deadliest city by Axios and Reuters. While its homicide rate is not 
+                 the highest in the U.S., Chicago has consistently had more total killings than any other U.S. city —
+                 with 27 people killed in November 2018 alone."),
+             
+                h5("WHY IT MATTERS"),
+                p("Racial segregation, wealth inequality, gangs and the inability of law enforcement to solve 
+                 crimes have fueled a crime epidemic. The presense of drugs and violence in areas of all different income 
+                 levels has only made mattes worse. Minority and impoverished neighborhoods have received the brunt of the impact."),
+                br(),
+                
+                p("The median income in the majority-African-American neighborhood is $20,000 less than the median income for 
+                 Chicago, and almost a third of Illinois's poorest neighborhood's residents live below the poverty line."),
+                br(),
+                
+                p("The Chicago Police Department recovered 7,000 guns per year that had been illegally owned or associated with
+                 a crime between 2013 and 2016, which is three times more than a resident in New York."),
+                br(),
+                
+                h5("MY QUESTION"),
+                p("Are these factors really related? Is the prevelence of drugs in an Illinois county correlated to increased
+                 homicide? Do all low income areas have increased drug use or homicide levels? I hope to challege some of these assumptions.")
+                
+                
+                  ),
+                
+                fluidPage(
                   # A static infoBox
-                  infoBox("New Orders", 10 * 2, icon = icon("credit-card")),
-                  # Dynamic infoBoxes
-                  infoBoxOutput("progressBox"),
-                  infoBoxOutput("approvalBox"),
-                 
-                  infoBox("New Orders", 10 * 2, icon = icon("credit-card"), fill = TRUE),
-                  infoBoxOutput("progressBox2"),
-                  infoBoxOutput("approvalBox2")
+                  infoBox("Population", "12.8 Mil.", icon = icon("users")),
+      
+                  infoBox("Poverty Rt.", "13 % ", icon = icon("angle-double-down"), color = "light-blue", fill = TRUE),
+                  
+                  infoBox("Med.Income", "$60.9 K", icon = icon("money")),
+                  
+                  infoBox("Med. Age", "37.9 yrs.", icon = icon("birthday-cake"), color = "light-blue", fill = TRUE)
+              
                 )
                 
-              
               
       ),
     
@@ -72,7 +100,7 @@ ui <- dashboardPage( skin = "purple",
                  box(plotOutput("barplot")
                      ), #box for barplot
                  
-                 box(plotOutput("scatterplot")
+                 box(plotOutput("barplot2")
                  ), #box for scatter
                  
                  box(h4("Plot A Parameters"),
@@ -165,21 +193,20 @@ server <- function(input, output) {
       ggplot(aes_string(x = input$x, y = input$y, fill = input$z)) +
       geom_bar(stat="identity", color = "white", width=0.2, position = position_dodge(width=0.9))+
       labs(title="The Effect of Income on Homicides in Chicago Counties")+
-      theme_minimal()+
       theme(legend.position="bottom")
     
   })
   
-  output$scatterplot <- renderPlot({
+  output$barplot2 <- renderPlot({
     
     ##Read in the results data from UPSHOT
-    clean_data %>% 
-      ggplot(aes_string(x = input$a, y = input$b)) +
-      geom_point(stat="identity", color = "black", width=0.2, position = position_dodge(width=0.9))+
-      labs(title="The Effect of Income on Drug Activity in Chicago Counties")+
-      scale_x_log10()+
+    poverty_race %>% 
+      ggplot(aes_string(x = "total_race", y= "share", fill = "race")) +
+      geom_bar(stat="identity", color = "white", width = 0.05 ) + scale_x_log10()+
+      labs(title="Share of Population in Poverty Per Race")+
       theme_minimal()+
-      theme(legend.position="bottom")
+      theme(legend.position="bottom")+
+      scale_fill_brewer(palette = "Purples")
     
   })
   

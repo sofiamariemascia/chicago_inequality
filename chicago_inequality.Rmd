@@ -17,6 +17,8 @@ library(dplyr)
 library(base)
 library(devtools)
 library(urbnmapr)
+library(plotly)
+library(RColorBrewer)
 
 ```
 
@@ -112,3 +114,24 @@ race_mapping_data %>% write_rds("demo_app/race_mapping_data.rds")
 
 
 ```
+
+```{r}
+
+poverty_race <- read.csv("poverty_race.csv", na.strings=c(""," ","None"))
+
+poverty_race <- poverty_race %>% 
+  select(year, poverty_white, poverty_asian, poverty_black, poverty_hispanic, poverty_native, poverty_other) %>% 
+  mutate(total_pov = poverty_white + poverty_asian + poverty_black + poverty_hispanic + poverty_native + poverty_other) %>% 
+  group_by(year) %>% 
+ # filter(year == 2016) %>% 
+  gather(poverty_white, poverty_asian, poverty_black, poverty_hispanic, poverty_native, poverty_other, key = "race", value = "total_race") %>% 
+    mutate(share = total_race/total_pov)
+
+
+
+poverty_race %>% write_rds("demo_app/poverty_race.rds")
+
+```
+
+
+

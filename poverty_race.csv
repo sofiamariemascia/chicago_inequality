@@ -1,0 +1,5 @@
+year,geo_name,geo,poverty_2ormore,poverty_2ormore_moe,poverty_asian,poverty_asian_moe,poverty_black,poverty_black_moe,poverty_hawaiian,poverty_hawaiian_moe,poverty_hispanic,poverty_hispanic_moe,poverty_native,poverty_native_moe,poverty_other,poverty_other_moe,poverty_white,poverty_white_moe,poverty_white_non_hispanic,poverty_white_non_hispanic_moe
+2013,"Illinois","04000US17",49693.0,2515.0,71251.0,3153.0,535979.0,6633.0,363.0,134.0,419350.0,8645.0,5691.0,686.0,168535.0,7135.0,940821.0,10677.0,710647.0,9013.0
+2014,"Illinois","04000US17",52425.0,6732.0,80292.0,7860.0,536973.0,17316.0,None,None,422138.0,18460.0,5924.0,1588.0,150454.0,10927.0,978087.0,24347.0,731687.0,18119.0
+2015,"Illinois","04000US17",52160.0,5746.0,76737.0,6396.0,498446.0,18521.0,None,None,413779.0,20084.0,6930.0,2217.0,159266.0,13058.0,909101.0,26900.0,675350.0,18581.0
+2016,"Illinois","04000US17",52175.0,5571.0,77595.0,8150.0,458785.0,17575.0,None,None,368886.0,18056.0,5609.0,1291.0,156645.0,16100.0,870223.0,25547.0,677086.0,20556.0
