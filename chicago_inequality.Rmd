@@ -35,7 +35,8 @@ clean_data <- data %>%
   mutate(state = str_sub(geo_name, -2, -1)) %>% 
   filter(state == "IL") %>% 
   mutate_all(funs(replace(., is.na(.), 0))) %>% 
-  filter(homicide_rate_2015 >= 3, homicide_rate_2016 >= 3)
+  filter(homicide_rate_2015 >= 3, homicide_rate_2016 >= 3) %>% 
+  mutate(County = geo_name)
 
 
  ## Later - find a way to clean county column: str_split(geo_name, "County, ", n=2)
@@ -107,10 +108,11 @@ mapping_data <- household_data %>%
 race_mapping_data <- left_join(white_black_hisp, mapping_data, by = "county_fips")
 
 race_mapping_data <- race_mapping_data %>% 
-  mutate(county_fips = as.integer(county_fips)) %>% 
-  select(lat, long, group, income_black, income_hispanic, income_white)
+  mutate(county_fips = as.integer(county_fips)) 
 
 race_mapping_data %>% write_rds("demo_app/race_mapping_data.rds")
+
+
 
 
 ```
@@ -120,12 +122,12 @@ race_mapping_data %>% write_rds("demo_app/race_mapping_data.rds")
 poverty_race <- read.csv("poverty_race.csv", na.strings=c(""," ","None"))
 
 poverty_race <- poverty_race %>% 
-  select(year, poverty_white, poverty_asian, poverty_black, poverty_hispanic, poverty_native, poverty_other) %>% 
-  mutate(total_pov = poverty_white + poverty_asian + poverty_black + poverty_hispanic + poverty_native + poverty_other) %>% 
+  select(year, poverty_white, poverty_asian, poverty_black, poverty_hispanic, poverty_other) %>% 
+  mutate(total_pov = poverty_white + poverty_asian + poverty_black + poverty_hispanic + poverty_other) %>% 
   group_by(year) %>% 
- # filter(year == 2016) %>% 
-  gather(poverty_white, poverty_asian, poverty_black, poverty_hispanic, poverty_native, poverty_other, key = "race", value = "total_race") %>% 
-    mutate(share = total_race/total_pov)
+
+  gather(poverty_white, poverty_asian, poverty_black, poverty_hispanic, poverty_other, key = "race", value = "total_race") %>% 
+    mutate(share = (total_race/total_pov)*100)
 
 
 

@@ -38,7 +38,10 @@ ui <- dashboardPage( skin = "purple",
      sidebarMenu(
        menuItem("About the Study", tabName = "about", icon = icon("home")),
        menuItem("Homicide x Drug", tabName = "figure1", icon = icon("dashboard")),
-       menuItem("Income X Maps", tabName = "maps", icon = icon("th"))
+       menuItem("Poverty x Race", tabName = "figure2", icon = icon("dashboard")
+                
+                ),
+       menuItem("Income x Maps", tabName = "maps", icon = icon("th"))
      )
    ),
    
@@ -78,7 +81,11 @@ ui <- dashboardPage( skin = "purple",
                 
                 
                   ),
-                
+              
+              box(
+                "insert image here"
+              ),
+              
                 fluidPage(
                   # A static infoBox
                   infoBox("Population", "12.8 Mil.", icon = icon("users")),
@@ -94,68 +101,90 @@ ui <- dashboardPage( skin = "purple",
               
       ),
     
-      
+      #CODE FOR FIRST BAR PLOT
       tabItem(tabName = "figure1",
                fluidPage(
-                 box(plotOutput("barplot")
-                     ), #box for barplot
                  
-                 box(plotOutput("barplot2")
-                 ), #box for scatter
+       
                  
-                 box(h4("Plot A Parameters"),
-                      selectInput("x", "X-axis:",
-                                  choices = c("homicide_rate_2015", "homicide_rate_2016"),
-                                  selected = "homicide_rate_2016"),
-                      selectInput("y", "Y-axis:",
-                                  c("income_2015", "income_2016"),
-                                  selected = "income_2016"),
-                      selectInput("z", "Color By:",
-                                  c("income_2015", "income_2016", "geo_name"),
-                                  selected = "geo_name"),
-                      hr(),
-                      helpText("Data from DATA USA.")
-                      ), #box for plot A param. 
+                 box(plotlyOutput("barplot"),
+                     width = 750, 
+                     height = 900,
+                     
+                     box(
+                       title = "Homicide and Drugs", width = 12, solidHeader = TRUE,
+                       "Explore this page to view how income affects homicide rates in Illinois Counties. 
+                       Counties of importance include Cook County where Chicago is located, and St. Clair County 
+                       that lies on the outskirts of St. Louis Missouri. Both counties host the state's largest economic hubs
+                       and thus see higher incomes, but they are racked by inequalities in inner city neighboorhoods which could
+                       explain the high homicide rates across 2015 and 2016."
+                     ),
+                     
+                     h4("Plot A Parameters"),
+                     selectInput("x", "X-axis:",
+                                 choices = c("homicide_rate_2015", "homicide_rate_2016"),
+                                 selected = "homicide_rate_2016"),
+                     selectInput("y", "Y-axis:",
+                                 c("income_2015", "income_2016"),
+                                 selected = "income_2016"),
+                     selectInput("z", "Color By:",
+                                 c("income_2015", "income_2016", "County"),
+                                 selected = "County"),
+                     
+                    
+                     
+                     hr(),
+                     helpText("Data from DATA USA.")
+                 ) #box for barplot
                 
-              
-                 box(h4("Plot B Parameters"),
-                   selectInput("a", "X-axis:",
-                               choices = c("adult_smoking_2015", "adult_smoking2016"),
-                               selected = "adult_smoking_2016"),
-                   selectInput("b", "Y-axis:",
-                               c("income_2015", "income_2016"),
-                               selected = "income_2016"),
-                   hr(),
-                   helpText("Data from DATA USA.")) #box for plot B param.
                  
+                 
+                 ) #fluid row
+      ), #tab item tag
+                
+      
+      #CODE FOR SECOND FIGURE
+             tabItem(tabName = "figure2",
+              fluidPage(
+                
+                box(plotlyOutput("barplot2"),
+                    width = 800, 
+                    height = 700,
+                    
+                    box(
+                      title = "Percentage of Pop. in Poverty Annualy per Race", width = 12, solidHeader = TRUE,
+                      "Explore this page to view what perctage of the population lived under the povertyline in Illinois, separated by race.
+                      It is striking that around 47 per cent of the population living in poverty was white.  "
+                    )
+                ) #box for scatter
+                
                   ) #fluid row
-                  ), #tab item tag
-              
+                ), #tab item tag
               
       #MAP TAB CODE
       tabItem(tabName = "maps",
               fluidRow(
-               box( 
+               box(
                  h4("Median Household Income of Illinois by County"),
                  h5("Compare this map to those of income separated by race to the right."),
-                 plotOutput("mymap")
+                 plotlyOutput("mymap")
                ), #box for map1
                
                tabBox(
                  title = "Income by Race",
                  # The id lets us use input$tabset1 on the server to find the current tab
-                 id = "tabset1", height = "250px",
+                 id = "tabset1",
                  tabPanel("WHT", 
                           "Household Income: White",
-                          plotOutput("mymap2")
+                          plotlyOutput("mymap2")
                           ),
                  tabPanel("BLK", 
                           "Household Income: Black",
-                          plotOutput("mymap3")
+                          plotlyOutput("mymap3")
                  ),
                  tabPanel("HISP", 
                           "Household Income: Hispanic",
-                          plotOutput("mymap4")
+                          plotlyOutput("mymap4")
                  )
                  
                  #plotOutput("mymap3")
@@ -185,24 +214,29 @@ server <- function(input, output) {
   
   
    #output plot stuff
-  output$barplot <- renderPlot({
-    
+  output$barplot <- renderPlotly({
     
     ##Read in the results data from UPSHOT
     clean_data %>% 
       ggplot(aes_string(x = input$x, y = input$y, fill = input$z)) +
       geom_bar(stat="identity", color = "white", width=0.2, position = position_dodge(width=0.9))+
-      labs(title="The Effect of Income on Homicides in Chicago Counties")+
+      xlim(3, 17)+
+      labs(title="The Effect of Income on Homicides in Chicago Counties by Year")+
       theme(legend.position="bottom")
     
   })
   
-  output$barplot2 <- renderPlot({
+  output$barplot2 <- renderPlotly({
     
     ##Read in the results data from UPSHOT
     poverty_race %>% 
       ggplot(aes_string(x = "total_race", y= "share", fill = "race")) +
-      geom_bar(stat="identity", color = "white", width = 0.05 ) + scale_x_log10()+
+      geom_point(stat="identity", size = 4) + 
+      xlab("Percentage of Race in Poverty")+
+      ylab("Total People in Poverty")+
+      ylim(0, 50)+
+      geom_line()+
+      facet_wrap("year")+
       labs(title="Share of Population in Poverty Per Race")+
       theme_minimal()+
       theme(legend.position="bottom")+
@@ -211,13 +245,15 @@ server <- function(input, output) {
   })
   
   
-  output$mymap <- renderPlot({
+  output$mymap <- renderPlotly({
     
       countydata %>% 
       left_join(counties, by = "county_fips") %>% 
       filter(state_name =="Illinois") %>% 
-      ggplot(mapping = aes(long, lat, group = group, fill = medhhincome)) +
+      ggplot(mapping = aes(long, lat, group = group, fill = medhhincome, county_name=county_name))+
       geom_polygon(color = "#ffffff", size = .25) +
+      xlab(NULL) +
+      ylab(NULL) +
       scale_fill_gradient(labels = scales::number_format(),
                            guide = guide_colorbar(title.position = "top"),
                           low = "white", high = "darkblue") +
@@ -229,11 +265,13 @@ server <- function(input, output) {
      
   })
   
-  output$mymap2 <- renderPlot({
+  output$mymap2 <- renderPlotly({
     
     race_mapping_data %>% 
-      ggplot(mapping = aes(long, lat, group = group, fill = income_white)) +
+      ggplot(mapping = aes(long, lat, group = group, fill = income_white, county_name=county_name)) +
       geom_polygon(color = "#ffffff", size = .25) +
+      xlab(NULL) +
+      ylab(NULL) +
       scale_fill_gradient(labels = scales::number_format(),
                           guide = guide_colorbar(title.position = "top"),
                           low = "white", high = "#FD1FDF"
@@ -246,11 +284,13 @@ server <- function(input, output) {
     
   })
   
-  output$mymap3 <- renderPlot({
+  output$mymap3 <- renderPlotly({
     
     race_mapping_data %>% 
-      ggplot(mapping = aes(long, lat, group = group, fill = income_black)) +
+      ggplot(mapping = aes(long, lat, group = group, fill = income_black,county_name=county_name)) +
       geom_polygon(color = "#ffffff", size = .25) +
+      xlab(NULL) +
+      ylab(NULL) +
       scale_fill_gradient(labels = scales::number_format(),
                           guide = guide_colorbar(title.position = "top"),
                           low = "white", high = "#C9FF02"
@@ -264,11 +304,13 @@ server <- function(input, output) {
     
   })
   
-  output$mymap4 <- renderPlot({
+  output$mymap4 <- renderPlotly({
     
     race_mapping_data %>% 
-      ggplot(mapping = aes(long, lat, group = group, fill = income_hispanic)) +
+      ggplot(mapping = aes(long, lat, group = group, fill = income_hispanic, county_name=county_name)) +
       geom_polygon(color = "#ffffff", size = .25) +
+      xlab(NULL) +
+      ylab(NULL) +
       scale_fill_gradient(labels = scales::number_format(),
                           guide = guide_colorbar(title.position = "top"),
                           low = "white", high = "#61C8FF"

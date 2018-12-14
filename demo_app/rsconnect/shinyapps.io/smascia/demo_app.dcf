@@ -1,0 +1,12 @@
+name: demo_app
+title: demo_app
+username:
+account: smascia
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 617053
+bundleId: 1763420
+url: https://smascia.shinyapps.io/demo_app/
+when: 1544801588.58912
+asMultiple: FALSE
+asStatic: FALSE
