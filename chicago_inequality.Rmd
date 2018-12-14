@@ -37,7 +37,7 @@ clean_data <- data %>%
 
 
  ## Later - find a way to clean county column: str_split(geo_name, "County, ", n=2)
-  
+
  clean_data %>% write_rds("demo_app/chicago_inequality.rds")
 ```
 
@@ -45,17 +45,70 @@ clean_data <- data %>%
 ```{r}
 
 #Cleaning data for income map
+
 #INCOME WHITE
-income_white <- read.csv("income_white.csv", na.strings=c(""," ","NA"))
+income_white <- read.csv("income_white.csv", na.strings=c(""," ","None"))
 
 income_white <- income_white %>% 
-  filter(year == 2016)
- 
-income_white %>% write_rds("demo_app/income_white.rds")
+  filter(year == 2015) %>% 
+  mutate(county_fips = str_sub(geo, 8, 12)) %>% 
+  select(income_white, county_fips) %>% 
+  mutate_all(funs(replace(., is.na(.), 0)))
+  
+  income_white %>% write_rds("demo_app/income_white.rds") 
 
-## Loading County Data
-household_data <- left_join(countydata, counties, by = "county_fips") 
+
+#INCOME BLACK
+income_black <- read.csv("income_black.csv", na.strings=c(""," ","None"))
+
+income_black <- income_black %>% 
+  filter(year == 2015) %>% 
+  mutate(county_fips = str_sub(geo, 8, 12)) %>% 
+  select(income_black, county_fips) %>% 
+  mutate_all(funs(replace(., is.na(.), 0)))
+
+income_black %>% write_rds("demo_app/income_black.rds")
+
+
+#INCOME HISP
+income_hisp <- read.csv("income_hisp.csv", na.strings=c(""," ","None"))
+
+income_hisp <- income_hisp %>% 
+  filter(year == 2015) %>% 
+    mutate(county_fips = str_sub(geo, 8, 12)) %>% 
+   select(income_hispanic, county_fips) %>% 
+   mutate_all(funs(replace(., is.na(.), 0)))
+
+income_hisp %>% write_rds("demo_app/income_hisp.rds")
+
+white_black <- left_join(income_white, income_black, by = "county_fips")
+
+white_black_hisp <- left_join(white_black, income_hisp, by = "county_fips")
 
 ```
 
+```{r}
 
+## Loading County Data
+## Note this data was accessed by loading the "urbnmapr" package from github: 
+  # LINK : 
+
+household_data <- left_join(countydata, counties, by = "county_fips") 
+
+mapping_data <- household_data %>% 
+  filter(state_name == "Illinois") %>%
+  filter(year == "2015") %>% 
+  mutate(group = as.numeric(group)) %>% 
+  mutate(piece = as.numeric(piece))
+  
+  
+race_mapping_data <- left_join(white_black_hisp, mapping_data, by = "county_fips")
+
+race_mapping_data <- race_mapping_data %>% 
+  mutate(county_fips = as.integer(county_fips)) %>% 
+  select(lat, long, group, income_black, income_hispanic, income_white)
+
+race_mapping_data %>% write_rds("demo_app/race_mapping_data.rds")
+
+
+```
