@@ -51,7 +51,7 @@ ui <- dashboardPage( skin = "purple",
       tabItem(tabName = "about",
               fluidPage(
                 
-              img(src = "skyline.png", width = 700, height = 350),
+              img(src = "skyline.png", width = 800, height = 350),
               
               br(),
               
