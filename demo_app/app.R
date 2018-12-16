@@ -17,7 +17,7 @@ library(devtools)
 library(urbnmapr)
 library(plotly)
 library(RColorBrewer)
-library(shinyWidgets)
+
 
 
 clean_data <- read_rds("chicago_inequality.rds")
@@ -34,6 +34,7 @@ ui <- dashboardPage( skin = "purple",
    
    #SIDEBAR
    dashboardSidebar(
+     img(src = "seal.png", width = 230, height = 230),
                   
      sidebarMenu(
        menuItem("About the Study", tabName = "about", icon = icon("home")),
@@ -41,13 +42,19 @@ ui <- dashboardPage( skin = "purple",
        menuItem("Poverty x Race", tabName = "figure2", icon = icon("dashboard")),
        menuItem("Interactive Income Maps", tabName = "maps", icon = icon("th"))
      )
+     
    ),
    
    #BODY
    dashboardBody(
     tabItems(
       tabItem(tabName = "about",
-              img(src = "skyline.png"),
+              fluidPage(
+                
+              img(src = "skyline.png", width = 700, height = 350),
+              
+              br(),
+              
               box(
                 h3("Please Mind the Gap! Illinois, a Racial and Socioeconomic Spectrum"),
                 h4("By Sofia Marie Mascia"),
@@ -66,9 +73,7 @@ ui <- dashboardPage( skin = "purple",
                  homicide? Who makes up the composition of people in poverty? Does your race affect your income? I hope to challege some of these assumptions.")
               
                   ),
-              
-              
-                fluidPage(
+            br(),
                   # A static infoBox
                   infoBox("Population", "12.8 Mil.", icon = icon("users")),
       
@@ -131,7 +136,8 @@ ui <- dashboardPage( skin = "purple",
                 
                 box(plotlyOutput("barplot2"),
                     width = 10000, 
-                    height = 700,
+                    height = 600,
+                    br(),
                     
                     box(
                       title = "Percentage of Pop. in Poverty Annualy by Race", width = 12, solidHeader = TRUE,
