@@ -5,8 +5,8 @@ account: smascia
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 617053
-bundleId: 1763420
+bundleId: 1763725
 url: https://smascia.shinyapps.io/demo_app/
-when: 1544801588.58912
+when: 1544810614.69811
 asMultiple: FALSE
 asStatic: FALSE

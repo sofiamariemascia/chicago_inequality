@@ -27,9 +27,11 @@ data <- read.csv("chicago-inequality.csv", na.strings=c(""," ","NA"))
 ```
 
 ```{r}
+#Here I clena the data that will be used in my Homicide bar graph
+
 clean_data <- data %>% 
   drop_na(geo_name) %>% 
-  select(geo_name, adult_smoking_2015, adult_smoking_2016, homicide_rate_2015, 
+  select(geo_name, homicide_rate_2015, 
          homicide_rate_2016, income_2015, income_2016) %>% 
   group_by(geo_name) %>% 
   mutate(state = str_sub(geo_name, -2, -1)) %>% 
@@ -37,7 +39,6 @@ clean_data <- data %>%
   mutate_all(funs(replace(., is.na(.), 0))) %>% 
   filter(homicide_rate_2015 >= 3, homicide_rate_2016 >= 3) %>% 
   mutate(County = geo_name)
-
 
  ## Later - find a way to clean county column: str_split(geo_name, "County, ", n=2)
 
@@ -118,17 +119,24 @@ race_mapping_data %>% write_rds("demo_app/race_mapping_data.rds")
 ```
 
 ```{r}
+#Cleaning Data for My Poverty and Race table
 
 poverty_race <- read.csv("poverty_race.csv", na.strings=c(""," ","None"))
 
 poverty_race <- poverty_race %>% 
   select(year, poverty_white, poverty_asian, poverty_black, poverty_hispanic, poverty_other) %>% 
-  mutate(total_pov = poverty_white + poverty_asian + poverty_black + poverty_hispanic + poverty_other) %>% 
+  mutate(total_pov = poverty_white + poverty_asian + poverty_black + poverty_hispanic + poverty_other) %>%
   group_by(year) %>% 
 
   gather(poverty_white, poverty_asian, poverty_black, poverty_hispanic, poverty_other, key = "race", value = "total_race") %>% 
-    mutate(share = (total_race/total_pov)*100)
+  mutate(share = (total_race/total_pov)*100) %>%
 
+  mutate(race = case_when(
+    race == "poverty_white" ~ "White",
+    race == "poverty_asian" ~ "Asian",
+    race == "poverty_black" ~ "Black",
+    race == "poverty_hispanic" ~ "Hisp",
+    race == "poverty_other" ~ "Other"))
 
 
 poverty_race %>% write_rds("demo_app/poverty_race.rds")

@@ -17,6 +17,7 @@ library(devtools)
 library(urbnmapr)
 library(plotly)
 library(RColorBrewer)
+library(shinyWidgets)
 
 
 clean_data <- read_rds("chicago_inequality.rds")
@@ -29,19 +30,16 @@ poverty_race <- read_rds("poverty_race.rds")
 ui <- dashboardPage( skin = "purple",
   
     #HEADER
-   dashboardHeader(title = "Mind the Gap!"
-                   ),
+   dashboardHeader(title = "Mind the Gap!"),
    
    #SIDEBAR
    dashboardSidebar(
                   
      sidebarMenu(
        menuItem("About the Study", tabName = "about", icon = icon("home")),
-       menuItem("Homicide x Drug", tabName = "figure1", icon = icon("dashboard")),
-       menuItem("Poverty x Race", tabName = "figure2", icon = icon("dashboard")
-                
-                ),
-       menuItem("Income x Maps", tabName = "maps", icon = icon("th"))
+       menuItem("Homicide x Income", tabName = "figure1", icon = icon("dashboard")),
+       menuItem("Poverty x Race", tabName = "figure2", icon = icon("dashboard")),
+       menuItem("Interactive Income Maps", tabName = "maps", icon = icon("th"))
      )
    ),
    
@@ -49,42 +47,26 @@ ui <- dashboardPage( skin = "purple",
    dashboardBody(
     tabItems(
       tabItem(tabName = "about",
+              img(src = "skyline.png"),
               box(
-                h3("Please Mind the Gap! Illinois, a Racial and Socioeconomic Diaspra"),
+                h3("Please Mind the Gap! Illinois, a Racial and Socioeconomic Spectrum"),
                 h4("By Sofia Marie Mascia"),
                 div(),
                 p("This app aims to prove how socioeconomic gaps in Illinois 
-                   indicate negative effects of inequality elsewhere."),
-                br(),
-                
+                   indicate negative effects of inequality."),
                 p("Chicago has been dubed America's deadliest city by Axios and Reuters. While its homicide rate is not 
                  the highest in the U.S., Chicago has consistently had more total killings than any other U.S. city —
                  with 27 people killed in November 2018 alone."),
-             
-                h5("WHY IT MATTERS"),
-                p("Racial segregation, wealth inequality, gangs and the inability of law enforcement to solve 
-                 crimes have fueled a crime epidemic. The presense of drugs and violence in areas of all different income 
-                 levels has only made mattes worse. Minority and impoverished neighborhoods have received the brunt of the impact."),
-                br(),
-                
                 p("The median income in the majority-African-American neighborhood is $20,000 less than the median income for 
                  Chicago, and almost a third of Illinois's poorest neighborhood's residents live below the poverty line."),
-                br(),
-                
                 p("The Chicago Police Department recovered 7,000 guns per year that had been illegally owned or associated with
                  a crime between 2013 and 2016, which is three times more than a resident in New York."),
-                br(),
-                
                 h5("MY QUESTION"),
-                p("Are these factors really related? Is the prevelence of drugs in an Illinois county correlated to increased
-                 homicide? Do all low income areas have increased drug use or homicide levels? I hope to challege some of these assumptions.")
-                
-                
+                p("Are these factors really related? Are income gaps in Illinois counties correlated to increased
+                 homicide? Who makes up the composition of people in poverty? Does your race affect your income? I hope to challege some of these assumptions.")
+              
                   ),
               
-              box(
-                "insert image here"
-              ),
               
                 fluidPage(
                   # A static infoBox
@@ -112,7 +94,7 @@ ui <- dashboardPage( skin = "purple",
                      height = 900,
                      
                      box(
-                       title = "Homicide and Drugs", width = 12, solidHeader = TRUE,
+                       title = "Homicide Death's per 10,000 People in Illinois Counties.", width = 12, solidHeader = TRUE,
                        "Explore this page to view how income affects homicide rates in Illinois Counties. 
                        Counties of importance include Cook County where Chicago is located, and St. Clair County 
                        that lies on the outskirts of St. Louis Missouri. Both counties host the state's largest economic hubs
@@ -148,11 +130,11 @@ ui <- dashboardPage( skin = "purple",
               fluidPage(
                 
                 box(plotlyOutput("barplot2"),
-                    width = 800, 
+                    width = 10000, 
                     height = 700,
                     
                     box(
-                      title = "Percentage of Pop. in Poverty Annualy per Race", width = 12, solidHeader = TRUE,
+                      title = "Percentage of Pop. in Poverty Annualy by Race", width = 12, solidHeader = TRUE,
                       "Explore this page to view what perctage of the population lived under the povertyline in Illinois, separated by race.
                       It is striking that around 47 per cent of the population living in poverty was white.  "
                     )
@@ -175,25 +157,31 @@ ui <- dashboardPage( skin = "purple",
                  # The id lets us use input$tabset1 on the server to find the current tab
                  id = "tabset1",
                  tabPanel("WHT", 
-                          "Household Income: White",
+                          "Median HouseHousehold Income: White",
                           plotlyOutput("mymap2")
                           ),
                  tabPanel("BLK", 
-                          "Household Income: Black",
+                          "Median Household Income: Black",
                           plotlyOutput("mymap3")
                  ),
                  tabPanel("HISP", 
-                          "Household Income: Hispanic",
+                          "Median Household Income: Hispanic",
                           plotlyOutput("mymap4")
                  )
                  
                  #plotOutput("mymap3")
+               ),
+               
+               box(
+                 title = "Interactive Maps", width = 12, solidHeader = TRUE,
+                 "Explore this page to compare how median house-hold income separated by race, compares to median household income in Illinois in.  "
                )
                
           
               ) #fluid row
               
               ) #tab item (maps)
+      
              ) #tab items tag
             ) #dashboard body tag
 )
@@ -219,10 +207,10 @@ server <- function(input, output) {
     ##Read in the results data from UPSHOT
     clean_data %>% 
       ggplot(aes_string(x = input$x, y = input$y, fill = input$z)) +
-      geom_bar(stat="identity", color = "white", width=0.2, position = position_dodge(width=0.9))+
+      geom_bar(stat="identity", color = "white", width=0.2)+
       xlim(3, 17)+
-      labs(title="The Effect of Income on Homicides in Chicago Counties by Year")+
-      theme(legend.position="bottom")
+      labs(title="The Effect of Income on Homicides")+
+      theme(legend.position="bottom", title = element_text( size = 13, lineheight = .9, family = "Times", face = "bold.italic", colour = "black"))
     
   })
   
@@ -239,7 +227,10 @@ server <- function(input, output) {
       facet_wrap("year")+
       labs(title="Share of Population in Poverty Per Race")+
       theme_minimal()+
-      theme(legend.position="bottom")+
+      theme(legend.position="bottom", title = element_text(size = 14, lineheight = .9, family = "Times", 
+                                                            face = "bold.italic", colour = "black"), 
+            strip.text = element_text(size = 12, face = "bold"))+
+      
       scale_fill_brewer(palette = "Purples")
     
   })
@@ -259,8 +250,9 @@ server <- function(input, output) {
                           low = "white", high = "darkblue") +
       coord_map(projection = "albers", lat0 = 39, lat1 = 45) +
       theme(legend.title = element_text(),
-            legend.key.width = unit(.5, "in")) +
-      labs(fill = "White: Med. HH Income")
+            legend.key.width = unit(.5, "in")
+            ) +
+      labs(fill = "Med. HH Income")
   
      
   })
@@ -279,7 +271,7 @@ server <- function(input, output) {
       coord_map(projection = "albers", lat0 = 39, lat1 = 45) +
       theme(legend.title = element_text(),
             legend.key.width = unit(.5, "in")) +
-      labs(fill = "Black: Med. HH Income")
+      labs(fill = "Income: White")
     
     
   })
@@ -299,7 +291,7 @@ server <- function(input, output) {
       coord_map(projection = "albers", lat0 = 39, lat1 = 45) +
       theme(legend.title = element_text(),
             legend.key.width = unit(.5, "in")) +
-      labs(fill = "Hisp: Med. HH Income")
+      labs(fill = "Income: Black")
     
     
   })
@@ -319,8 +311,7 @@ server <- function(input, output) {
       coord_map(projection = "albers", lat0 = 39, lat1 = 45) +
       theme(legend.title = element_text(),
             legend.key.width = unit(.5, "in")) +
-      labs(fill = "Hisp: Med. HH Income")
-    
+      labs(fill = "Income: Hisp")
     
   })
   
